@@ -211,10 +211,11 @@ def is_nbt_container(tag: 'nbt.AnyTag') -> bool:
 
 def tests():
     import json
+    import os.path
     for data in (
-        json.load(open("../data/New World/advancements/"
-                       "8b4accb8-d952-4050-97f2-e00c4423ba92.json")),
-        nbt.load_dat("../data/New World/level.dat"),
+        json.load(open(os.path.abspath("data/New World/advancements/" # Switched to using absolute path to avoid directory not found error
+                       "8b4accb8-d952-4050-97f2-e00c4423ba92.json"))),
+        nbt.load_dat(os.path.abspath("data/New World/level.dat")),
         [{"x": 1, "y": 2}, "a", ((4, {"z": 5}, "b"), 6, "c")],
         {"name": ["Rodrigo", ("E", "S"), "Silva"], "alias": "MestreLion"}
     ):
